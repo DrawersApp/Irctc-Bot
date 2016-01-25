@@ -66,7 +66,7 @@ public class Bot {
             public void processPacket(Stanza packet) throws SmackException.NotConnectedException, InterruptedException {
                 Message message = (Message) packet;
                 Observable.just(message)
-                        .subscribeOn(Schedulers.computation())
+                        .subscribeOn(Schedulers.io())
                         .map(msg -> msg.getBody())
                         .filter(body -> body != null && body.length() > 0)
                         .map(word -> RetrofitAdapter.getRetrofitAdapter().getIrctcInterface().getPnrStatus(word, RetrofitAdapter.getRetrofitAdapter().getApiKey()))
