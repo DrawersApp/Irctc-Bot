@@ -10,6 +10,14 @@ public enum  BotStringType {
     S("String"),
     U("UNEDITABLE");
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
     private String desc;
     BotStringType(String desc) {
         this.desc = desc;

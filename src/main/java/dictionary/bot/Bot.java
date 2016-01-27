@@ -40,7 +40,7 @@ public class Bot {
     public void initializeConnection() throws XmppStringprepException {
         SmackConfiguration.setDefaultPacketReplyTimeout(30 * 1000);
         XMPPTCPConnectionConfiguration.Builder config = XMPPTCPConnectionConfiguration.builder();
-        config.setUsernameAndPassword("63d1911e-6de3-49d6-8d09-4f4fa39ab7db", "irctc");
+        config.setUsernameAndPassword("harshit1", "tractor");
         config.setResource("smack");
         config.setXmppDomain(JidCreate.domainBareFrom("ejabberd.sandwitch.in"));
         config.setDebuggerEnabled(true);
@@ -65,16 +65,30 @@ public class Bot {
             @Override
             public void processPacket(Stanza packet) throws SmackException.NotConnectedException, InterruptedException {
                 Message message = (Message) packet;
+                if ("help".equals(message.getBody())) {
+                    xmppConnection.sendStanza(generateMessage(message.getFrom(), Message.Type.chat, DrawersBotStringHelp.getDrawersBotStringHelp().toJsonString()));
+                    return;
+                }
                 Observable.just(message)
                         .subscribeOn(Schedulers.io())
                         .map(msg -> msg.getBody())
                         .filter(body -> body != null && body.length() > 0)
-                        .map(word -> RetrofitAdapter.getRetrofitAdapter().getIrctcInterface().getPnrStatus(word, RetrofitAdapter.getRetrofitAdapter().getApiKey()))
-                        .map(meaning -> RetrofitAdapter.generateText(meaning))
+                        .map(word -> OperationsManager.getOperationsManager().getDrawersBotString(word))
+                        .filter(drawersBotString -> drawersBotString != null)
+                        .map(nonNullDrawersBotString -> OperationsManager.getOperationsManager().performOperations(nonNullDrawersBotString))
+                        .map(outputBody -> outputBody.toUserString())
                         .filter(serializedMeaning -> serializedMeaning.length() > 0)
                         .subscribe(output -> {
                             try {
                                 xmppConnection.sendStanza(generateMessage(message.getFrom(), Message.Type.chat, output));
+                            } catch (SmackException.NotConnectedException e) {
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }, error -> {
+                            try {
+                                xmppConnection.sendStanza(generateMessage(message.getFrom(), Message.Type.chat, "error"));
                             } catch (SmackException.NotConnectedException e) {
                                 e.printStackTrace();
                             } catch (InterruptedException e) {

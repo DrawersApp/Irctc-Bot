@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 /**
  * Created by harshit on 25/1/16.
  */
-public class PNRStatus {
+public class PNRStatus implements OutputBody {
     private boolean error;
     private String train_name;
     private String train_num;
@@ -84,6 +84,11 @@ public class PNRStatus {
 
     private String toJsonStringPassengers() {
         return passengers.stream().map(w  -> w.toJsonString()).collect(Collectors.joining("\n"));
+    }
+
+    @Override
+    public String toUserString() {
+        return toJsonStringPassengers();
     }
 
     private class Passengers {

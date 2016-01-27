@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by harshit on 25/1/16.
  */
-public class LiveStatus {
+public class LiveStatus implements OutputBody {
     private String position;
     private String train_number;
     private List<Route> route;
@@ -17,6 +17,11 @@ public class LiveStatus {
                 ", train_number='" + train_number + '\'' +
                 ", route=" + route +
                 '}';
+    }
+
+    @Override
+    public String toUserString() {
+        return toString();
     }
 
     private class Route {
