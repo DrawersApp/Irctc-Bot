@@ -1,5 +1,10 @@
 package dictionary.bot;
 
+import dictionary.bot.operations.LiveStatusOperations;
+import dictionary.bot.operations.PNRStatusOperation;
+import dictionary.bot.operations.SeatAvailabilityOperations;
+import dictionary.bot.operations.TrainBetweenStationOperations;
+
 import java.util.HashMap;
 import java.util.Map;
 

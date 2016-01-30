@@ -1,6 +1,7 @@
-package dictionary.bot;
+package dictionary.bot.operations;
 
 import com.google.gson.annotations.SerializedName;
+import dictionary.bot.OutputBody;
 
 import java.util.List;
 
@@ -60,7 +61,7 @@ import java.util.List;
  }
  }
  */
-public class SeatAvailability {
+public class SeatAvailability implements OutputBody {
     private String train_number;
     private String train_name;
     private Station from;
@@ -137,6 +138,11 @@ public class SeatAvailability {
                 ", quota=" + quota +
                 ", seatClass=" + seatClass +
                 '}';
+    }
+
+    @Override
+    public String toUserString() {
+        return toString();
     }
 
 

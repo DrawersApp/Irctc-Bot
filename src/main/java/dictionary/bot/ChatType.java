@@ -5,6 +5,5 @@ package dictionary.bot;
  */
 public enum ChatType {
     TEXT,
-    HELP,
     QA
 }

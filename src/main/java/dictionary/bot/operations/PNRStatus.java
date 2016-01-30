@@ -1,4 +1,6 @@
-package dictionary.bot;
+package dictionary.bot.operations;
+
+import dictionary.bot.OutputBody;
 
 import java.util.List;
 import java.util.stream.Collectors;

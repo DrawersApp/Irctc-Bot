@@ -25,6 +25,5 @@
     <orderEntry type="library" name="Maven: org.igniterealtime.smack:smack-experimental:4.2.0-alpha2" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.retrofit:retrofit:1.9.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.3.1" level="project" />
-    <orderEntry type="library" name="Maven: io.reactivex:rxjava:1.0.3" level="project" />
   </component>
 </module>

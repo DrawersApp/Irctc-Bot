@@ -1,4 +1,6 @@
-package dictionary.bot;
+package dictionary.bot.operations;
+
+import dictionary.bot.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +32,6 @@ public class PNRStatusOperation implements Operation {
                     getPnrStatus(pnr, RetrofitAdapter.getRetrofitAdapter().getApiKey());
             return pnrStatus;
         }
-        return null;
-    }
-
-    @Override
-    public String getString(OutputBody outputBody) {
         return null;
     }
 

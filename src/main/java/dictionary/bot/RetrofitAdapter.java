@@ -37,11 +37,6 @@ public class RetrofitAdapter {
         irctcInterface = restAdapter.create(IrctcInterface.class);
     }
 
-    static String generateText(PNRStatus pnrStatus) {
-        return pnrStatus.toJsonString();
-    }
-
-
     public String getApiKey() {
         return apiKey;
     }

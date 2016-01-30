@@ -1,6 +1,8 @@
 package dictionary.bot;
 
 import com.google.gson.Gson;
+import dictionary.bot.operations.LiveStatusOperations;
+import dictionary.bot.operations.PNRStatusOperation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,6 @@ public class DrawersBotStringHelp {
         drawersBotStrings = new ArrayList<>();
         drawersBotStrings.add(PNRStatusOperation.getPnrBotString());
         drawersBotStrings.add(LiveStatusOperations.toDrawersBotString());
-
     }
 
     public String toJsonString() {

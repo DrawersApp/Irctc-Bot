@@ -1,5 +1,9 @@
 package dictionary.bot;
 
+import dictionary.bot.operations.LiveStatus;
+import dictionary.bot.operations.PNRStatus;
+import dictionary.bot.operations.SeatAvailability;
+import dictionary.bot.operations.Trains;
 import retrofit.http.GET;
 import retrofit.http.Path;
 

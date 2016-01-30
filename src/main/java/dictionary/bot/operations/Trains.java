@@ -1,6 +1,7 @@
-package dictionary.bot;
+package dictionary.bot.operations;
 
 import com.google.gson.annotations.SerializedName;
+import dictionary.bot.OutputBody;
 
 import java.util.List;
 
@@ -93,7 +94,7 @@ import java.util.List;
  ]
  }
  */
-public class Trains {
+public class Trains implements OutputBody {
     private int total;
     private List<Train> train;
 
@@ -103,6 +104,11 @@ public class Trains {
                 "total=" + total +
                 ", train=" + train +
                 '}';
+    }
+
+    @Override
+    public String toUserString() {
+        return toString();
     }
 
     private class Train {

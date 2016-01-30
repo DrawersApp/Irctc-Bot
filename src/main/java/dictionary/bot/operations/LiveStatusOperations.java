@@ -1,11 +1,11 @@
-package dictionary.bot;
+package dictionary.bot.operations;
 
-import java.sql.Timestamp;
+import dictionary.bot.*;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.StringJoiner;
 
 /**
  * Created by harshit on 27/1/16.
@@ -23,11 +23,6 @@ public class LiveStatusOperations implements Operation {
                     getIrctcInterface().getLiveStatus(trainNumber, df.format(date),RetrofitAdapter.getRetrofitAdapter().getApiKey());
             return liveStatus;
         }
-        return null;
-    }
-
-    @Override
-    public String getString(OutputBody outputBody) {
         return null;
     }
 

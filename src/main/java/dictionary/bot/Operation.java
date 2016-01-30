@@ -5,5 +5,4 @@ package dictionary.bot;
  */
 public interface Operation {
     OutputBody makeRestCall(DrawersBotString body);
-    String getString(OutputBody outputBody);
 }
