@@ -8,7 +8,8 @@ public enum  BotStringType {
     L("LOCATION"),
     T("TIME"),
     S("String"),
-    U("UNEDITABLE");
+    U("UNEDITABLE"),
+    LI("LIST");
 
     public String getDesc() {
         return desc;

@@ -14,4 +14,6 @@ public class TrainBetweenStationOperations implements Operation {
         return null;
     }
 
+//            operationMap.put(OperationsType.TRAIN, TrainBetweenStationOperations.class);
+
 }

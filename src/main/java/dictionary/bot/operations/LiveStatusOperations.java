@@ -33,6 +33,8 @@ public class LiveStatusOperations implements Operation {
         botStringElements.add(new BotStringElement(BotStringType.U, "date:"));
         botStringElements.add(new BotStringElement(BotStringType.D, "23-11-2015", null));
         liveStatusString = new DrawersBotString(botStringElements);
+        OperationsManager.getOperationsManager().registerOperations(OperationsType.LIVESTATUS,
+                LiveStatusOperations.class,  botStringElements.get(0).getPlaceHolder());
     }
 
     public static DrawersBotString toDrawersBotString() {

@@ -53,7 +53,7 @@ public class Bot {
     public void initializeConnection() throws XmppStringprepException, SmackException.NotConnectedException, InterruptedException {
         SmackConfiguration.setDefaultPacketReplyTimeout(30 * 1000);
         XMPPTCPConnectionConfiguration.Builder config = XMPPTCPConnectionConfiguration.builder();
-        config.setUsernameAndPassword("harshit1", "tractor");
+        config.setUsernameAndPassword("63d1911e-6de3-49d6-8d09-4f4fa39ab7db", "irctc");
         config.setResource("smack");
         config.setXmppDomain(JidCreate.domainBareFrom("ejabberd.sandwitch.in"));
         config.setDebuggerEnabled(true);
@@ -98,6 +98,9 @@ public class Bot {
      * Also check for error conditions.
      */
     private void replyMessage(Message message) {
+        if (message.getBody() == null) {
+            return;
+        }
         String replyMessage = messageSubscriber.getErrorDefaultText();
         try {
             replyMessage = messageSubscriber.generateReply(message);

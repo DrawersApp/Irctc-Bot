@@ -23,6 +23,8 @@ public class PNRStatusOperation implements Operation {
         botStringElements.add(new BotStringElement(BotStringType.U, "PNR NO."));
         botStringElements.add(new BotStringElement(BotStringType.S, "1234567890", null));
         pnrBotString = new DrawersBotString(botStringElements);
+        OperationsManager.getOperationsManager().registerOperations(OperationsType.PNRCHECK, PNRStatusOperation.class,
+                botStringElements.get(0).getPlaceHolder());
     }
 
     @Override

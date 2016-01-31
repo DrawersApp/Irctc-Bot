@@ -2,6 +2,8 @@ package dictionary.bot;
 
 import org.jivesoftware.smack.packet.Message;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by harshit on 30/1/16.
  */
@@ -19,5 +21,5 @@ public interface MessageSubscriber {
      * This function takes the input message,
      * makes the computation and return the relevant reply.
      */
-    String generateReply(Message message);
+    String generateReply(Message message) throws UnsupportedEncodingException;
 }

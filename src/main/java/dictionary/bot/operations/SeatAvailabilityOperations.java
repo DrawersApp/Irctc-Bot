@@ -30,6 +30,8 @@ public class SeatAvailabilityOperations implements Operation {
         botStringElements.add(new BotStringElement(BotStringType.U, "date:"));
         botStringElements.add(new BotStringElement(BotStringType.D, "23-11-2015", null));
         seatAvailabilityString = new DrawersBotString(botStringElements);
+        OperationsManager.getOperationsManager().registerOperations(OperationsType.SEATAVAILABILITY, SeatAvailabilityOperations.class,
+                botStringElements.get(0).getPlaceHolder());
     }
 
 }

@@ -1,10 +1,5 @@
 package dictionary.bot;
 
-import dictionary.bot.operations.LiveStatusOperations;
-import dictionary.bot.operations.PNRStatusOperation;
-import dictionary.bot.operations.SeatAvailabilityOperations;
-import dictionary.bot.operations.TrainBetweenStationOperations;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,11 +7,10 @@ import java.util.Map;
  * Created by harshit on 27/1/16.
  */
 public class OperationsManager {
-    public OperationsManager() {
-        operationMap.put(OperationsType.LIVESTATUS, LiveStatusOperations.class);
-        operationMap.put(OperationsType.PNRCHECK, PNRStatusOperation.class);
-        operationMap.put(OperationsType.SEATAVAILABILITY, SeatAvailabilityOperations.class);
-        operationMap.put(OperationsType.TRAIN, TrainBetweenStationOperations.class);
+
+    public void registerOperations(OperationsType operationsType, Class<? extends Operation> operations,
+                                   String firstString) {
+        operationMap.put(operationsType, new OperationsMapValues(operations, firstString));
     }
 
     public static OperationsManager getOperationsManager() {
@@ -25,7 +19,7 @@ public class OperationsManager {
 
     private static OperationsManager operationsManager = new OperationsManager();
 
-    private Map<OperationsType, Class<? extends Operation>> operationMap = new HashMap<>();
+    private Map<OperationsType, OperationsMapValues> operationMap = new HashMap<>();
 
     public DrawersBotString getDrawersBotString(String inputString) {
         DrawersBotString drawersBotString = DrawersBotString.fromString(inputString);
@@ -37,24 +31,26 @@ public class OperationsManager {
             return null;
         }
         String placeHolder = drawersBotString.getBotStringElements().get(0).getPlaceHolder();
-        if ("PNR NO.".equals(placeHolder)) {
-            try {
-                return operationMap.get(OperationsType.PNRCHECK).newInstance().makeRestCall(drawersBotString);
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        } else if ("Live Status Train no.:".equals(placeHolder)) {
-            try {
-                return operationMap.get(OperationsType.LIVESTATUS).newInstance().makeRestCall(drawersBotString);
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
+        for (Map.Entry<OperationsType, OperationsMapValues> entry : operationMap.entrySet()) {
+            if (entry.getValue().firstString.equals(placeHolder)) {
+                try {
+                    return entry.getValue().operations.newInstance().makeRestCall(drawersBotString);
+                } catch (InstantiationException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
         }
         return null;
+    }
+
+    public class OperationsMapValues {
+        private Class<? extends Operation> operations;
+        private String firstString;
+
+        public OperationsMapValues(Class<? extends Operation> operations, String firstString) {
+            this.operations = operations;
+            this.firstString = firstString;
+        }
     }
 
 }
