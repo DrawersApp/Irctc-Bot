@@ -1,8 +1,6 @@
 package dictionary.bot;
 
-import dictionary.bot.operations.LiveStatus;
-import dictionary.bot.operations.LiveStatusOperations;
-import dictionary.bot.operations.PNRStatusOperation;
+import dictionary.bot.operations.*;
 import jdk.internal.dynalink.beans.StaticClass;
 import org.jivesoftware.smack.SmackException;
 import org.jivesoftware.smack.packet.Message;
@@ -18,8 +16,11 @@ public class BotsCaller implements MessageSubscriber {
 
 
     public static void main(String[] args) throws XmppStringprepException, SmackException.NotConnectedException, InterruptedException, ClassNotFoundException {
+        // Load all the classes which contains string.
         Class.forName(LiveStatusOperations.class.getName());
         Class.forName(PNRStatusOperation.class.getName());
+        Class.forName(TrainBetweenStationOperations.class.getName());
+        Class.forName(SeatAvailabilityOperations.class.getName());
         BotsCaller botsCaller = new BotsCaller();
         Bot.getBot(botsCaller);
         while (true) {

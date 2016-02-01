@@ -63,7 +63,7 @@ public class LiveStatusOperations implements Operation {
                         return false;
                     }
                     break;
-                case "String":
+                case "STRING":
                     trainNumber = botStringElement.getText();
                     if (trainNumber == null) {
                         return false;

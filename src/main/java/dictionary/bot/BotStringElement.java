@@ -43,7 +43,7 @@ public class BotStringElement {
 
     private List<String> defaults; // Useful for %l
 
-    public BotStringElement(String placeHolder, String text, BotStringType type, List<String> defaults) {
+    public BotStringElement(BotStringType type, String placeHolder, String text, List<String> defaults) {
         this.placeHolder = placeHolder;
         this.text = text;
         this.type = type;

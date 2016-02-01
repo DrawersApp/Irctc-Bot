@@ -9,7 +9,8 @@ public enum  BotStringType {
     T("TIME"),
     S("String"),
     U("UNEDITABLE"),
-    LI("LIST");
+    LI("LIST"),
+    I("INTEGER");
 
     public String getDesc() {
         return desc;

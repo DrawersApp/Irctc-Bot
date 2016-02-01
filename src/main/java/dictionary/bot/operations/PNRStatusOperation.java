@@ -51,7 +51,7 @@ public class PNRStatusOperation implements Operation {
                         return false;
                     }
                     break;
-                case "String":
+                case "STRING":
                     pnr = botStringElement.getText();
                     if (pnr == null) {
                         return false;
