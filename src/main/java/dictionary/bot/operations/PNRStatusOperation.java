@@ -25,6 +25,7 @@ public class PNRStatusOperation implements Operation {
         pnrBotString = new DrawersBotString(botStringElements);
         OperationsManager.getOperationsManager().registerOperations(OperationsType.PNRCHECK, PNRStatusOperation.class,
                 botStringElements.get(0).getPlaceHolder());
+        DrawersBotStringHelp.getDrawersBotStringHelp().getDrawersBotStrings().add(pnrBotString);
     }
 
     @Override

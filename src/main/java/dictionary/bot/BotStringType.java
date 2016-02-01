@@ -7,7 +7,7 @@ public enum  BotStringType {
     D("DATE"),
     L("LOCATION"),
     T("TIME"),
-    S("String"),
+    S("STRING"),
     U("UNEDITABLE"),
     LI("LIST"),
     I("INTEGER");

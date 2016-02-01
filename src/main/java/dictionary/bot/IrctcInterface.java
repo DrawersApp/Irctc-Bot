@@ -17,7 +17,7 @@ public interface IrctcInterface {
     PNRStatus getPnrStatus(@Path("pnr_no") String pnrNo, @Path("apikey") String apiKey);
 
     @GET("/check_seat/train/{trainNumber}/source/{source}/dest/" +
-            "{dest}/date/{doj}/class/{class>/quota/{quota}/apikey/{apikey}")
+            "{dest}/date/{doj}/class/{class}/quota/{quota}/apikey/{apikey}")
     SeatAvailability getSeat(@Path("trainNumber") String trainNumber, @Path("source") String sourceCode,
                              @Path("dest") String destCode, @Path("doj")String doj, @Path("quota")String quota,
                              @Path("apikey")String apiKey);
@@ -25,7 +25,7 @@ public interface IrctcInterface {
     //dd-mm
     @GET("/between/source/{source}/dest/{dest}/date/{date}/apikey/{apikey}/")
     Trains getTrainBetweenStations(@Path("source") String sourceCode,
-                                   @Path("dest") String destCode, @Path("doj")String doj,
+                                   @Path("dest") String destCode, @Path("date")String doj,
                                    @Path("apikey")String apiKey);
 
     @GET("/live/train/{trainNumber}/doj/{doj}/apikey/{apikey}/")

@@ -19,6 +19,7 @@ public class SeatAvailabilityOperations implements Operation {
     private String destCode;
     private Date doj;
     private String quota;
+    private String classType = "SL";
 
     public static DrawersBotString getSeatAvailabilityString() {
         return seatAvailabilityString;
@@ -66,7 +67,19 @@ public class SeatAvailabilityOperations implements Operation {
                     }
                     break;
                 case "LIST":
-                    quota = botStringElement.getText();
+                    if (QuotaType.GENERAL.name().equals(botStringElement.getPlaceHolder())) {
+                        quota = QuotaType.valueOf(botStringElement.getText()).getType();
+                        if (quota == null) {
+                            return false;
+                        }
+                    }
+                    if (ClassType.SL.name().equals(botStringElement.getPlaceHolder())) {
+                        classType = ClassType.valueOf(botStringElement.getText()).name();
+                        if (classType == null) {
+                            return false;
+                        }
+                    }
+                    break;
                 case "INTEGER":
                     trainNumber = botStringElement.getText();
                     if (trainNumber == null) {
@@ -75,7 +88,7 @@ public class SeatAvailabilityOperations implements Operation {
                     break;
             }
         }
-        if (this.doj == null || this.trainNumber == null) {
+        if (this.doj == null || this.trainNumber == null || this.quota == null) {
             return false;
         }
         return true;
@@ -91,12 +104,17 @@ public class SeatAvailabilityOperations implements Operation {
         botStringElements.add(new BotStringElement(BotStringType.S, "LKO", null));
         botStringElements.add(new BotStringElement(BotStringType.U, "date:"));
         botStringElements.add(new BotStringElement(BotStringType.D, "12-05-2016", null));
-        botStringElements.add(new BotStringElement(BotStringType.U, "quota:", null));
+        botStringElements.add(new BotStringElement(BotStringType.U, "quota:"));
         botStringElements.add(new BotStringElement(BotStringType.LI, QuotaType.GENERAL.name(),
                 QuotaType.GENERAL.name(), Arrays.asList(QuotaType.GENERAL.name(), QuotaType.TATKAL.name())));
+        botStringElements.add(new BotStringElement(BotStringType.U, "class:"));
+        botStringElements.add(new BotStringElement(BotStringType.LI, ClassType.SL.name(),
+                ClassType.SL.name(), Arrays.asList(ClassType.AC1.name(), ClassType.AC2.name(),
+                ClassType.AC3.name(), ClassType.SL.name(), ClassType.CC.name())));
         seatAvailabilityString = new DrawersBotString(botStringElements);
         OperationsManager.getOperationsManager().registerOperations(OperationsType.SEATAVAILABILITY, SeatAvailabilityOperations.class,
                 botStringElements.get(0).getPlaceHolder());
+        DrawersBotStringHelp.getDrawersBotStringHelp().getDrawersBotStrings().add(seatAvailabilityString);
     }
 
 

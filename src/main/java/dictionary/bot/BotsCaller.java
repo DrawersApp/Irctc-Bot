@@ -21,6 +21,7 @@ public class BotsCaller implements MessageSubscriber {
         Class.forName(PNRStatusOperation.class.getName());
         Class.forName(TrainBetweenStationOperations.class.getName());
         Class.forName(SeatAvailabilityOperations.class.getName());
+        System.out.print(DrawersBotStringHelp.getDrawersBotStringHelp().toJsonString());
         BotsCaller botsCaller = new BotsCaller();
         Bot.getBot(botsCaller);
         while (true) {

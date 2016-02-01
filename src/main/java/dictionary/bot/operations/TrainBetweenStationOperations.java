@@ -19,8 +19,9 @@ public class TrainBetweenStationOperations implements Operation {
     public OutputBody makeRestCall(DrawersBotString body) {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM");
         if (validate(body)) {
+            String dateString = df.format(date);
             Trains trains = RetrofitAdapter.getRetrofitAdapter().getIrctcInterface().getTrainBetweenStations(sourceCode,
-                    destCode, df.format(date), RetrofitAdapter.getRetrofitAdapter().getApiKey());
+                    destCode, dateString, RetrofitAdapter.getRetrofitAdapter().getApiKey());
             return trains;
         }
         return null;
@@ -43,6 +44,7 @@ public class TrainBetweenStationOperations implements Operation {
         trainBetweenStationsString = new DrawersBotString(botStringElements);
         OperationsManager.getOperationsManager().registerOperations(OperationsType.TRAIN, TrainBetweenStationOperations.class,
                 botStringElements.get(0).getPlaceHolder());
+        DrawersBotStringHelp.getDrawersBotStringHelp().getDrawersBotStrings().add(trainBetweenStationsString);
     }
 
     private boolean validate(DrawersBotString drawersBotString) {
@@ -67,9 +69,6 @@ public class TrainBetweenStationOperations implements Operation {
                         destCode = botStringElement.getText();
                     }
 
-                    if (sourceCode == null || destCode == null) {
-                        return false;
-                    }
                     break;
                 case "DATE":
                     String date = botStringElement.getText();
@@ -84,6 +83,8 @@ public class TrainBetweenStationOperations implements Operation {
         if (date == null || sourceCode == null || destCode == null) {
             return false;
         }
+        sourceCode = sourceCode.toUpperCase();
+        destCode = destCode.toUpperCase();
         return true;
     }
 }

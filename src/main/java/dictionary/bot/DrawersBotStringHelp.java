@@ -11,6 +11,10 @@ import java.util.List;
  * Help send when user connects for the first time.
  */
 public class DrawersBotStringHelp {
+    public List<DrawersBotString> getDrawersBotStrings() {
+        return drawersBotStrings;
+    }
+
     private List<DrawersBotString> drawersBotStrings;
 
     public static DrawersBotStringHelp getDrawersBotStringHelp() {
@@ -21,8 +25,6 @@ public class DrawersBotStringHelp {
 
     private DrawersBotStringHelp() {
         drawersBotStrings = new ArrayList<>();
-        drawersBotStrings.add(PNRStatusOperation.getPnrBotString());
-        drawersBotStrings.add(LiveStatusOperations.toDrawersBotString());
     }
 
     public String toJsonString() {

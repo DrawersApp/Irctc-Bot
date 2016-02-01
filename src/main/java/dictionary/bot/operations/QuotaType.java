@@ -7,6 +7,10 @@ public enum QuotaType {
     GENERAL("GN"),
     TATKAL("CK");
 
+    public String getType() {
+        return type;
+    }
+
     private String type;
 
     QuotaType(String type) {

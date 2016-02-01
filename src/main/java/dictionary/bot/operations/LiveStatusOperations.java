@@ -35,6 +35,7 @@ public class LiveStatusOperations implements Operation {
         liveStatusString = new DrawersBotString(botStringElements);
         OperationsManager.getOperationsManager().registerOperations(OperationsType.LIVESTATUS,
                 LiveStatusOperations.class,  botStringElements.get(0).getPlaceHolder());
+        DrawersBotStringHelp.getDrawersBotStringHelp().getDrawersBotStrings().add(liveStatusString);
     }
 
     public static DrawersBotString toDrawersBotString() {
