@@ -10,24 +10,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.igniterealtime.smack</groupId>
-            <artifactId>smack-java7</artifactId>
-            <version>4.2.0-alpha2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.igniterealtime.smack</groupId>
-            <artifactId>smack-tcp</artifactId>
-            <version>4.2.0-alpha2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.igniterealtime.smack</groupId>
-            <artifactId>smack-extensions</artifactId>
-            <version>4.2.0-alpha2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.igniterealtime.smack</groupId>
-            <artifactId>smack-experimental</artifactId>
-            <version>4.2.0-alpha2</version>
+            <groupId>com.github.DrawersApp</groupId>
+            <artifactId>drawers-java-sdk</artifactId>
+            <version>v1.1</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit</groupId>
@@ -37,7 +22,7 @@
     </dependencies>
 
     <build>
-        <finalName>dictionarybot</finalName>
+        <finalName>irctcbot</finalName>
         <plugins>
 
             <!-- download source code in Eclipse, best practice -->
@@ -83,7 +68,8 @@
                                 </transformer>
                             </transformers>
                             <artifactSet/>
-                            <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
+                            <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar
+                            </outputFile>
                         </configuration>
                     </execution>
                 </executions>
@@ -92,5 +78,11 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
 </project>

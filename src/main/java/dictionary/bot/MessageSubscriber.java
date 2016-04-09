@@ -1,6 +1,6 @@
 package dictionary.bot;
 
-import org.jivesoftware.smack.packet.Message;
+import org.drawers.bot.dto.DrawersMessage;
 
 import java.io.UnsupportedEncodingException;
 
@@ -10,16 +10,16 @@ import java.io.UnsupportedEncodingException;
 public interface MessageSubscriber {
     /**
      * @return String
-     * This text is shown when {@link #generateReply(Message)} message throws exception.
+     * This text is shown when {@link #generateReply(DrawersMessage)} message throws exception.
      */
-    String getErrorDefaultText();
+    DrawersMessage getErrorDefaultMessage(DrawersMessage message);
 
     /**
      *
      * @param message
-     * @return String
+     * @return DrawersMessage
      * This function takes the input message,
      * makes the computation and return the relevant reply.
      */
-    String generateReply(Message message) throws UnsupportedEncodingException;
+    DrawersMessage generateReply(DrawersMessage message) throws UnsupportedEncodingException;
 }
