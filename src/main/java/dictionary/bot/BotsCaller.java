@@ -25,7 +25,7 @@ public class BotsCaller extends DrawersClient implements MessageSubscriber {
         Class.forName(SeatAvailabilityOperations.class.getName());
         System.out.print(DrawersBotStringHelp.getDrawersBotStringHelp().toJsonString());
 
-        BotsCaller botsCaller = new BotsCaller("REPLACE_ME_CLIENT_ID", "REPLACE_ME_PASSWORD");
+        BotsCaller botsCaller = new BotsCaller("b850be65-387e-4c4a-a8b3-d3e2b08677d2", "b0c2b47b-ff88-4d45-8635-f863dff9eb35");
         botsCaller.startBot();
     }
 

@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 /**
  * Created by harshit on 20/1/16.
  */
-public class ChatMetaData {
+public class    ChatMetaData {
     public ChatMetaData(String subType, long timestamp) {
         this.subType = subType;
         this.timestamp = timestamp;
