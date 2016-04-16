@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class TrainBetweenStationOperations implements Operation {
 
+    private static final long serialVersionUID = 8184426033032608992L;
     private String sourceCode;
     private String destCode;
     private Date date;

@@ -10,6 +10,8 @@ import java.util.List;
  */
 public class PNRStatusOperation implements Operation {
 
+    private static final long serialVersionUID = -8032976005108775933L;
+
     public static DrawersBotString getPnrBotString() {
         return pnrBotString;
     }

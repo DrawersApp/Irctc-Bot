@@ -95,6 +95,7 @@ import java.util.List;
  }
  */
 public class Trains implements OutputBody {
+    private static final long serialVersionUID = 2013787763405683980L;
     private int total;
     private List<Train> train;
 

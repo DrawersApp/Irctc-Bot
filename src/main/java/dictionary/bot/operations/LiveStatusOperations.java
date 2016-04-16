@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class LiveStatusOperations implements Operation {
 
+    private static final long serialVersionUID = 5335845704004340784L;
     private static DrawersBotString liveStatusString;
     private String trainNumber;
     private Date date;

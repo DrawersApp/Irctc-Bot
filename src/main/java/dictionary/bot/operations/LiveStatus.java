@@ -2,12 +2,14 @@ package dictionary.bot.operations;
 
 import dictionary.bot.OutputBody;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by harshit on 25/1/16.
  */
 public class LiveStatus implements OutputBody {
+    private static final long serialVersionUID = -2296473266632528232L;
     private String position;
     private String train_number;
     private List<Route> route;
@@ -26,7 +28,8 @@ public class LiveStatus implements OutputBody {
         return toString();
     }
 
-    private class Route {
+    private class Route implements Serializable {
+        private static final long serialVersionUID = 4926112385177142029L;
         private int no;
         private String station;
         private boolean has_arrived;

@@ -62,6 +62,7 @@ import java.util.List;
  }
  */
 public class SeatAvailability implements OutputBody {
+    private static final long serialVersionUID = -2760903892999076435L;
     private String train_number;
     private String train_name;
     private Station from;

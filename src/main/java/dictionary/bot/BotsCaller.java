@@ -25,8 +25,16 @@ public class BotsCaller extends DrawersClient implements MessageSubscriber {
         Class.forName(SeatAvailabilityOperations.class.getName());
         System.out.print(DrawersBotStringHelp.getDrawersBotStringHelp().toJsonString());
 
-        BotsCaller botsCaller = new BotsCaller("b850be65-387e-4c4a-a8b3-d3e2b08677d2", "b0c2b47b-ff88-4d45-8635-f863dff9eb35");
-        botsCaller.startBot();
+        if(args.length != 2) {
+            System.out.println("Usage: java DrawersClientCli <clientId> <password>");
+        } else {
+            String clientId = args[0];
+            String password = args[1];
+            BotsCaller botsCaller = new BotsCaller(clientId, password);
+            botsCaller.startBot();
+        }
+
+
     }
 
     @Override
@@ -50,11 +58,11 @@ public class BotsCaller extends DrawersClient implements MessageSubscriber {
         }
         OutputBody outputBody = OperationsManager.getOperationsManager().performOperations(drawersBotString);
         if (outputBody == null) {
-            return new DrawersMessage(message.getSender(), "Incorrect message type");
+            return new DrawersMessage(message.getSender(), "Something went wrong");
         }
         String replyString = outputBody.toUserString();
         if (replyString == null || replyString.length() == 0) {
-            return new DrawersMessage(message.getSender(), "Incorrect message type");
+            return new DrawersMessage(message.getSender(), "Internal server error");
         }
         return new DrawersMessage(message.getSender(), replyString);
     }

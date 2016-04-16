@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
  * Created by harshit on 25/1/16.
  */
 public class PNRStatus implements OutputBody {
+    private static final long serialVersionUID = 9060493671412398525L;
     private boolean error;
     private String train_name;
     private String train_num;

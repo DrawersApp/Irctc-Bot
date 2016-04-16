@@ -1,6 +1,5 @@
 package dictionary.bot.operations;
 
-import com.sun.org.apache.regexp.internal.RE;
 import dictionary.bot.*;
 
 import java.text.SimpleDateFormat;
@@ -14,6 +13,7 @@ import java.util.List;
  */
 public class SeatAvailabilityOperations implements Operation {
 
+    private static final long serialVersionUID = 8777329052943130863L;
     private String trainNumber;
     private String sourceCode;
     private String destCode;
